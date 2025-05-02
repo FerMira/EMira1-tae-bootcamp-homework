@@ -1,0 +1,10 @@
+const priceItem01: number = 29.99;
+const priceItem02: number = 49.99;
+const priceItem03: number = 19.99;
+const taxRate: number = 7;
+const shoppingCartWithNoTaxes: number = priceItem01 + priceItem02 + priceItem03;
+const costOfTaxes: number = priceItem01*taxRate/100 + priceItem02*taxRate/100 + priceItem03*taxRate/100;
+const shoppingCartTotal: number = shoppingCartWithNoTaxes + costOfTaxes;
+console.log("Cost of shopping cart with no taxes is: " + shoppingCartWithNoTaxes);
+console.log("Cost of taxes is: " + costOfTaxes);
+console.log("Total Cost of shopping cart is: " + shoppingCartTotal.toFixed(2));
