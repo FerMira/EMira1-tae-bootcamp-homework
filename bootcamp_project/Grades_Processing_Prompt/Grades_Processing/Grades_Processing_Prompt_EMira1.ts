@@ -5,7 +5,7 @@
 const promptSync = require('prompt-sync')({sigint: true});
 const myUserName: string = promptSync("Hey there! What is your name? ");
 console.log("Welcome " + myUserName + " , Please enter how many grades would you like to enter for current student.")
-let ammountOfGrades: number = promptSync("Ammount of grades: ");
+let amountOfGrades: number = promptSync("Amount of grades: ");
 
 let gradesStudent01: number[] = [];
 
@@ -20,8 +20,8 @@ do {
             console.log("Invalid input. Please enter a number.");
         }
     }
-    ammountOfGrades--
-} while (ammountOfGrades !== 0)
+    amountOfGrades--
+} while (amountOfGrades !== 0)
 
 console.log("Student Grades:", gradesStudent01);
 
@@ -41,12 +41,12 @@ for (let i = 0; i < gradesStudent01.length; i++) {
     }
 
     sum += gradesStudent01[i];
-    ammountOfGrades++;
+    amountOfGrades++;
 
 }
 
 if (!exceptionalStudent ) {
-    console.log("Average score for student: " + sum / ammountOfGrades);
+    console.log("Average score for student: " + sum / amountOfGrades);
 }
 
 
