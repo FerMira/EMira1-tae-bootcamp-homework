@@ -1,5 +1,3 @@
-
-
 function circleArea(radius: number): number { 
     return Math.PI * (radius * radius);
 }
@@ -19,5 +17,3 @@ const cubeVolume = (cubeLength: number): number => {
 }
 
 console.log( "Volume of the cube is " + cubeVolume(3) + " cubic meters" );
-
-
