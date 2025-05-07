@@ -8,11 +8,11 @@ const product = {
 console.log("Product is: ");
 console.log( product );
 
-let newProduct = { ...product };
+const newProduct = { ...product };
 console.log("New Product is: ");
 console.log( newProduct );
 
-let archivedTags = [ ...product.tags ];
+const archivedTags = [ ...product.tags ];
 console.log("Archived tags are: ");
 console.log( archivedTags );
 
