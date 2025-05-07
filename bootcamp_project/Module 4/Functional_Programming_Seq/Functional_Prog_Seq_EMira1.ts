@@ -14,12 +14,6 @@ console.log("- Exercise to create an array method that takes\n ",
     "are between 50 and 75.");
 
 const arrayOfNumbers: number[] = [1, 2, 3, 50, 51, 52, 66, 70, 72, 75, 76, 85, 99, 101];
-const arrayFiltered = arrayOfNumbers.filter(num => {
-    if (num > 50 && num < 75) {
-        return true;
-    } else {
-        return false;
-    }
-});  
+const arrayFiltered = arrayOfNumbers.filter(num => num > 50 && num < 75);  
 
 console.log(arrayFiltered);
