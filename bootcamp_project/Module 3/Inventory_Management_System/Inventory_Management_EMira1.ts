@@ -40,9 +40,6 @@ console.log("Printing each Property");
 
 for ( let item of inventory ) {
    for (let key in item) {
-              console.log("Index " + inventory.findIndex + " => " + `${key}: ${item[key]}`);
+              console.log("Id " + item.id + " => " + `${key}: ${item[key]}`);
            }    
 }
-
-
-
