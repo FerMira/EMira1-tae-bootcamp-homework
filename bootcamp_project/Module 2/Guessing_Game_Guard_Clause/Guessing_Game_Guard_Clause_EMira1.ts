@@ -16,11 +16,14 @@ let attempt: number = 3;
 
             attempt--;
 
-            if (attempt > 0) {
-                if (myGuess < randomNumber) {
-                    console.log("Your guess is lower than the secret number. Aim higher.");
-                } else { console.log("Your guess is higher than the secret number. Aim lower."); }
+            if (attempt <= 0) {
+                break;
             }
+            if (myGuess < randomNumber) {
+                console.log("Your guess is lower than the secret number. Aim higher.");
+                continue;
+            }
+            console.log("Your guess is higher than the secret number. Aim lower.");
                    
      }
 
