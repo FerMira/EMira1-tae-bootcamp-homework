@@ -12,8 +12,7 @@ const rectanglePerimeter = function(length: number, height: number): number {
 
 console.log( "Perimeter of rectangle is " + rectanglePerimeter( 2, 5 ) + " meters" );
 
-const cubeVolume = (cubeLength: number): number => {
-    return cubeLength * cubeLength * cubeLength;
-}
+const cubeVolume = (cubeLength: number): number => cubeLength**3;
 
 console.log( "Volume of the cube is " + cubeVolume(3) + " cubic meters" );
+
