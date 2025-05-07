@@ -1,4 +1,4 @@
-let product = { 
+const product = { 
     id: 25669, 
     name: "Electric Screwdriver",
     price: 180,
