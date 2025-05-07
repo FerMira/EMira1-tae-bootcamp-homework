@@ -11,16 +11,17 @@ let gradesStudent01: number[] = [];
 
 do {
     let grade: number = promptSync("Insert grade: ");
-    if (grade !== null) {
-        let num: number = Number(grade);
-        if (!isNaN(num)) {
-            gradesStudent01.push(num);
-            
-        } else {
-            console.log("Invalid input. Please enter a number.");
-        }
+    if (grade === null) {
+        console.log("Invalid input (null). Please enter a number.");
+        continue;
     }
-    amountOfGrades--
+    let num: number = Number(grade);
+    if (isNaN(num)) {
+        console.log("Invalid input (NaN). Please enter a number.");
+        continue;
+    }        
+    gradesStudent01.push(num);
+    amountOfGrades--;
 } while (amountOfGrades !== 0)
 
 console.log("Student Grades:", gradesStudent01);
