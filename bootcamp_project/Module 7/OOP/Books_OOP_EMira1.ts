@@ -13,11 +13,11 @@ class Book {
         this.yearPublished = yearPublished;
     }
 
-    bookDetalils(){
+    bookDetalils(): void {
         console.log(`${this.title} by ${this.author}, published in ${this.yearPublished}.`);
     }
 
-    isAClassic(){
+    isAClassic(): void {
         const currentDate = new Date();
 
         if (currentDate.getFullYear() - this.yearPublished > 50) {
