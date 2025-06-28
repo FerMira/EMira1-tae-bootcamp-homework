@@ -2,13 +2,18 @@
   "name": "bootcamp_project",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Fernando Mira",
-  "license": "ISC",
-  "description": "",
   "devDependencies": {
     "testcafe": "^3.7.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:google-search": "testcafe chrome tests/*.ts --reporter html:reports/htmlReports/GoogleSearchTest.html --video reports/videos"
+  },
+  "author": "FerMira",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
+    "testcafe-reporter-html": "^1.4.6"
   }
 }
