@@ -3,7 +3,7 @@ class VideoGame {
     // Static attributes
     static availableGames: VideoGame[] = [];
     static soldOutGames: VideoGame[] = [];
-    static totalSold: number;
+    static totalMoneyEarned: number;
 
 
     // Instance attributes
@@ -13,7 +13,7 @@ class VideoGame {
     price: number;
     copiesSold: number;
 
-    constructor(title: string, developer: string, availableCopies: number, price: number, copiesSold: number, availableGames: string[]) {
+    constructor(title: string, developer: string, availableCopies: number, price: number, copiesSold: number) {
         this.title = title;
         this.developer = developer;
         this.availableCopies = availableCopies;
@@ -33,16 +33,17 @@ class VideoGame {
         try {
             if ( this.isAvailable() ) {
                 this.availableCopies -= numberOfCopies;
-                this.copiesSold += numberOfCopies;
-                VideoGame.totalSold = VideoGame.totalSold + this.copiesSold;
+                VideoGame.totalMoneyEarned += numberOfCopies;
 
                 if ( this.availableCopies === 0 ) {
                     VideoGame.soldOutGames.push(this);
                     VideoGame.availableGames = VideoGame.availableGames.filter(game => game != this);
                 }
+            } else {
+                console.error("Game is not availabe");
             }
-
-            return this.price;
+            console.log("Video game being sold is: " + this.title);
+            return this.price*numberOfCopies;
 
         } catch (error) {
 
@@ -54,7 +55,7 @@ class VideoGame {
     }
 
     static getTotalSold(): number {
-        return VideoGame.totalSold;
+        return VideoGame.totalMoneyEarned;
     }
 
     static sellGames(games: VideoGame[], copies?: number[]): number {
