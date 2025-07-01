@@ -1,4 +1,4 @@
-abstract class Animal {
+export abstract class Animal {
 
     protected name: string;
     private age: number;
@@ -11,7 +11,7 @@ abstract class Animal {
     abstract makeSound(): void;
 
     public getName(): string {
-        return `Name: ${this.name}`;
+        return this.name;
     }
 
     public getAge(): number {
