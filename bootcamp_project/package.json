@@ -1,0 +1,14 @@
+{
+  "name": "bootcamp_project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Fernando Mira",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "testcafe": "^3.7.2"
+  }
+}
