@@ -23,7 +23,16 @@ class BookData {
 
 }
 
-function fetchBook(_bookID: number): Promise<BookData> {
+function fetchBook(bookID: number): Promise<BookData> {
+
+    const books: BookData[] = [
+        { bookID: 1, bookName: "Alice in Fantasyland" },
+        { bookID: 2, bookName: "Draco Malfoy and the Vanishing Apple" },
+        { bookID: 3, bookName: "Game of Crowns" },
+        { bookID: 4, bookName: "Duke of the Earrings" },
+        { bookID: 5, bookName: "Animal Ranch" }
+      ];
+
     return new Promise((resolve,reject) => {
         setTimeout(() => {
             const random = Math.random();
@@ -31,14 +40,28 @@ function fetchBook(_bookID: number): Promise<BookData> {
             if (random < 0.2) {
                 reject(`Error occurred!`);
             } else {
-                console.log("Book: " + resolve(this.bookName));
+                const book = books.find(b => b.bookID === bookID);
+                if (book) {
+                    resolve(book);
+                  } else {
+                    reject(`Failed to fetch Book`);
+                  }
             }
-        });
+        }, 1500);
     })
 }
 
 
-function fetchUser(_userID: number): Promise<UserData> {
+function fetchUser(userID: number): Promise<UserData> {
+
+    const users: UserData[] = [
+        { userID: 1, userName: "Laura Croft" },
+        { userID: 2, userName: "Eduard King" },
+        { userID: 3, userName: "Queen Bananahamock" },
+        { userID: 4, userName: "Poppy Hog" },
+        { userID: 5, userName: "Jon Snowstorm" }
+      ];
+
     return new Promise((resolve,reject) => {
         setTimeout(() => {
             const random = Math.random();
@@ -46,9 +69,14 @@ function fetchUser(_userID: number): Promise<UserData> {
             if (random < 0.2) {
                 reject(`Error occurred!`);
             } else {
-                console.log("User: " + resolve(this.userName));
+                const user = users.find(u => u.userID === userID);
+                if (user) {
+                    resolve(user);
+                  } else {
+                    reject(`Failed to fetch User`);
+                  }
             }
-        });
+        }, 1500);
     })
 }
 
@@ -57,17 +85,16 @@ async function borrowBook(userID: number, bookID: number) {
     try{
         console.log("Fetching user...");
         console.log("Fetching book...");
-        fetchUser(userID);
-        fetchBook(bookID);
+        await fetchUser(userID)
+        .then(user => console.log("✅ User found: ", user));;
+        await fetchBook(bookID)
+        .then(book => console.log("✅ Book found: ", book));
     } catch (error) {
-        console.error("Failed to fetch book.", error);
+        console.error("Failed to fetch information.", error);
     } finally {
         console.log("Borrow operation completed.");
     }
 
 }
 
-const userFirst = new UserData(1234, "Alicia");
-const bookFirst = new BookData(111, "Alice in Wonderland");
-
-borrowBook(1234, 111);
+borrowBook(2, 5);
