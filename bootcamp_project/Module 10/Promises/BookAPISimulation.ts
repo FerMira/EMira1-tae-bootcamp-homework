@@ -42,7 +42,8 @@ function fetchBook(bookID: number): Promise<BookData> {
             } else {
                 const book = books.find(b => b.bookID === bookID);
                 if (book) {
-                    resolve(book);
+                    console.log("Book: " + book.bookName)
+                    resolve(this.bookID);
                   } else {
                     reject(`Failed to fetch Book`);
                   }
@@ -71,7 +72,8 @@ function fetchUser(userID: number): Promise<UserData> {
             } else {
                 const user = users.find(u => u.userID === userID);
                 if (user) {
-                    resolve(user);
+                    console.log("User: " + user.userName)
+                    resolve(this.userID);
                   } else {
                     reject(`Failed to fetch User`);
                   }
@@ -85,10 +87,8 @@ async function borrowBook(userID: number, bookID: number) {
     try{
         console.log("Fetching user...");
         console.log("Fetching book...");
-        await fetchUser(userID)
-        .then(user => console.log("✅ User found: ", user));;
-        await fetchBook(bookID)
-        .then(book => console.log("✅ Book found: ", book));
+        await fetchUser(userID);
+        await fetchBook(bookID);
     } catch (error) {
         console.error("Failed to fetch information.", error);
     } finally {
