@@ -26,11 +26,11 @@ class BookData {
 function fetchBook(bookID: number): Promise<BookData> {
 
     const books: BookData[] = [
-        { bookID: 1, bookName: "Alice in Fantasyland" },
-        { bookID: 2, bookName: "Draco Malfoy and the Vanishing Apple" },
-        { bookID: 3, bookName: "Game of Crowns" },
-        { bookID: 4, bookName: "Duke of the Earrings" },
-        { bookID: 5, bookName: "Animal Ranch" }
+        new BookData(1, "Alice in Fantasyland"),
+        new BookData(2, "Draco Malfoy and the Vanishing Apple"),
+        new BookData(3, "Game of Crowns"),
+        new BookData(4, "Duke of the Earrings"),
+        new BookData(5, "Animal Ranch")
       ];
 
     return new Promise((resolve,reject) => {
@@ -43,7 +43,7 @@ function fetchBook(bookID: number): Promise<BookData> {
                 const book = books.find(b => b.bookID === bookID);
                 if (book) {
                     console.log("Book: " + book.bookName)
-                    resolve(this.bookID);
+                    resolve(book);
                   } else {
                     reject(`Failed to fetch Book`);
                   }
@@ -56,11 +56,11 @@ function fetchBook(bookID: number): Promise<BookData> {
 function fetchUser(userID: number): Promise<UserData> {
 
     const users: UserData[] = [
-        { userID: 1, userName: "Laura Croft" },
-        { userID: 2, userName: "Eduard King" },
-        { userID: 3, userName: "Queen Bananahamock" },
-        { userID: 4, userName: "Poppy Hog" },
-        { userID: 5, userName: "Jon Snowstorm" }
+        new UserData(1, "Laura Croft"),
+        new UserData(2, "Eduard King"),
+        new UserData(3, "Queen Bananahamock"),
+        new UserData(4, "Poppy Hog"),
+        new UserData(5, "Jon Snowstorm")
       ];
 
     return new Promise((resolve,reject) => {
@@ -73,7 +73,7 @@ function fetchUser(userID: number): Promise<UserData> {
                 const user = users.find(u => u.userID === userID);
                 if (user) {
                     console.log("User: " + user.userName)
-                    resolve(this.userID);
+                    resolve(user);
                   } else {
                     reject(`Failed to fetch User`);
                   }
@@ -86,9 +86,11 @@ async function borrowBook(userID: number, bookID: number) {
 
     try{
         console.log("Fetching user...");
+        const user = await fetchUser(userID);
         console.log("Fetching book...");
-        await fetchUser(userID);
-        await fetchBook(bookID);
+        const book = await fetchBook(bookID);
+        console.log(`User found: ${JSON.stringify(user)}`);
+        console.log(`Book found: ${JSON.stringify(book)}`);
     } catch (error) {
         console.error("Failed to fetch information.", error);
     } finally {
@@ -98,3 +100,5 @@ async function borrowBook(userID: number, bookID: number) {
 }
 
 borrowBook(2, 5);
+borrowBook(1, 4);
+borrowBook(3, 3);
