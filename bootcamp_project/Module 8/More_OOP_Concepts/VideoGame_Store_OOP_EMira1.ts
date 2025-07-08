@@ -24,23 +24,23 @@ class VideoGame {
     }
 
     // Instance methods
-    isAvailable(): boolean {
-    return this.availableCopies > 0
+    isAvailable(copiesSold: number): boolean {
+    return this.availableCopies >= copiesSold;
     }
 
     sell(numberOfCopies:number = 1): number {
 
         try {
-            if ( this.isAvailable() ) {
+            if ( this.isAvailable(numberOfCopies) ) {
                 this.availableCopies -= numberOfCopies;
-                VideoGame.totalMoneyEarned += numberOfCopies;
+                VideoGame.totalMoneyEarned += this.price*numberOfCopies;
 
                 if ( this.availableCopies === 0 ) {
                     VideoGame.soldOutGames.push(this);
                     VideoGame.availableGames = VideoGame.availableGames.filter(game => game != this);
                 }
             } else {
-                console.error("Game is not availabe");
+                throw new Error("Game is not available");
             }
             console.log("Video game being sold is: " + this.title);
             return this.price*numberOfCopies;
@@ -48,7 +48,7 @@ class VideoGame {
         } catch (error) {
 
             console.error("Not available copies for this game:", error.message);
-            return this.price;
+            return 0;
 
             }
 
@@ -73,7 +73,7 @@ class VideoGame {
             console.error("Game is not available.", error.message);
             return totalPrice;
         } finally {
-        console.log("Game processed successfully");
+        console.log("Games processed successfully");
         }
     }
 }
