@@ -1,0 +1,18 @@
+{
+  "name": "grades_processing",
+  "version": "1.0.0",
+  "description": "Grades Processing Program using prompts.",
+  "main": "Grades_Processing_Prompt_EMira1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "EMira1",
+  "license": "ISC",
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.1",
+    "@types/prompt-sync": "^4.2.3"
+  }
+}
