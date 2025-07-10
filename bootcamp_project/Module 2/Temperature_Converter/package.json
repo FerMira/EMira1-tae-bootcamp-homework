@@ -1,0 +1,18 @@
+{
+  "name": "temperature_converter",
+  "version": "1.0.0",
+  "main": "Temperature_Converter_EMira1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "EMira1",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.1",
+    "@types/prompt-sync": "^4.2.3"
+  }
+}
