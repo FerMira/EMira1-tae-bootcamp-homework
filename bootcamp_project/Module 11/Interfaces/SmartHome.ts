@@ -40,10 +40,12 @@ class SmartLight implements Switchable {
 
     turnOn(): void {
         console.log(`${this.lightName} is turned on`);
+        this.isOn = true;
     }
 
     turnOff(): void {
         console.log(`${this.lightName} is turned off`);
+        this.isOn = false;
     }
 }
 
@@ -61,10 +63,12 @@ class SmartSpeaker implements Switchable, MusicPlayer {
 
     turnOn(): void {
         console.log(`${this.speakerName} is turned on`);
+        this.isOn = true;
     }
 
     turnOff(): void {
         console.log(`${this.speakerName} is turned off`);
+        this.isOn = false;
     }
 
     playMusic(): void {
@@ -72,6 +76,11 @@ class SmartSpeaker implements Switchable, MusicPlayer {
     };
 
     setVolume(volume: number): void {
+
+        if(volume < 0 || volume > 100) {
+            throw new Error("Volume is out of range")
+        }
+        this.volume = volume;
         console.log(`${this.speakerName} is at volume ${volume}`);
     };
 }
@@ -95,10 +104,15 @@ class SmartThermostat implements Switchable, TemperatureAdjustable {
 
     turnOff(): void {
             console.log(`${this.thermostatName} is turned off`);
+            this.isOn = false;
     }
 
     setTemperature(temperature: number): void {
-            console.log(`${this.thermostatName} is at ${temperature} degrees`);
+        if(temperature < -273.15) {
+            throw new Error("Temperature is to low.")
+        }
+        this.temperature = temperature;
+        console.log(`${this.thermostatName} is at ${temperature} degrees`);
     };
 }
 
@@ -118,13 +132,19 @@ class SmartFridge implements Switchable, TemperatureAdjustable, MusicPlayer {
 
     turnOn(): void {
         console.log(`${this.fridgeName} is turned on`);
+        this.isOn = true;
     }
 
     turnOff(): void {
         console.log(`${this.fridgeName} is turned off`);
+        this.isOn = false;
     }
 
     setTemperature(temperature: number): void {
+        if(temperature < -273.15) {
+            throw new Error("Temperature is to low.")
+        }
+        this.temperature = temperature;
         console.log(`${this.fridgeName} is at ${temperature} degrees`);
     };
 
@@ -133,6 +153,10 @@ class SmartFridge implements Switchable, TemperatureAdjustable, MusicPlayer {
     };
 
     setVolume(volume: number): void {
+        if(volume < 0 || volume > 100) {
+            throw new Error("Volume is out of range")
+        }
+        this.volume = volume;
         console.log(`${this.fridgeName} is at volume ${volume}`);
     };
 
